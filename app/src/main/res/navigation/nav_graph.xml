@@ -2,18 +2,17 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/movieListFragment">
-
+    app:startDestination="@id/moviesListFragment">
     <fragment
-        android:id="@+id/movieListFragment"
-        android:name="com.superapp.feature.list.presentation.view.MoviesListFragment">
+        android:id="@+id/moviesListFragment"
+        android:name="com.superapp.feature.list.presentation.view.MoviesListFragment"
+        android:label="MoviesListFragment" >
         <action
-            android:id="@+id/action_movieListFragment_to_blankFragment2"
-            app:destination="@id/blankFragment2" />
+            android:id="@+id/action_moviesListFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/blankFragment2"
-        android:name="com.superapp.feature.list.presentation.view.DetailFragment"
-        android:label="BlankFragment2" />
-
+        android:id="@+id/detailsFragment"
+        android:name="com.superapp.feature.details.presentation.DetailsFragment"
+        android:label="DetailsFragment" />
 </navigation>

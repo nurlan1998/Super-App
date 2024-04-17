@@ -24,3 +24,4 @@ rootProject.name = "Super App"
 include(":app")
 include(":core-network")
 include(":feature-list")
+include(":feature-details")
