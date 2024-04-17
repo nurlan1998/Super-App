@@ -1,0 +1,55 @@
+[versions]
+agp = "8.3.1"
+kotlin = "1.9.0"
+coreKtx = "1.12.0"
+junit = "4.13.2"
+junitVersion = "1.1.5"
+espressoCore = "3.5.1"
+appcompat = "1.6.1"
+material = "1.11.0"
+activity = "1.8.0"
+constraintlayout = "2.1.4"
+
+coil = "2.2.2"
+coroutines = "1.6.4"
+fragment = "1.5.3"
+gson = "2.9.1"
+lifecycle = "2.5.1"
+navigation = "2.5.2"
+okhttp = "4.10.0"
+orbit = "4.3.2"
+recycler_view = "1.2.1"
+retrofit = "2.9.0"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+
+
+coroutines_android = {module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines"}
+coroutines_core = {module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines"}
+fragment = { module = "androidx.fragment:fragment-ktx", version.ref = "fragment" }
+gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+ktx = {module = "androidx.core:core-ktx", version.ref = "coreKtx"}
+lifecycle = {module = "androidx.lifecycle:lifecycle-extensions", version.ref = "lifecycle"}
+navigation = {module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation"}
+navigation_ui = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation" }
+okhttp_logging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
+orbit = { module = "org.orbit-mvi:orbit-viewmodel", version.ref = "orbit" }
+recycler_view = { module = "androidx.recyclerview:recyclerview", version.ref = "recycler_view" }
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+retrofit_gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
+viewmodel_ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+coil = { module = "io.coil-kt:coil", version.ref = "coil" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+androidLibrary = { id = "com.android.library", version.ref = "agp" }
+
