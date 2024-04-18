@@ -3,7 +3,7 @@ package com.superapp.mobile.di
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.superapp.feature.list.domain.navigation.MovieListNavigation
+import com.superapp.feature.movies.domain.navigation.MovieListNavigation
 import com.superapp.mobile.R
 import com.superapp.mobile.navigation.Navigator
 import dagger.Binds

@@ -19,9 +19,10 @@ dependencyResolutionManagement {
         maven { setUrl("https://jitpack.io") }
     }
 }
-
+/**/
 rootProject.name = "Super App"
 include(":app")
 include(":core-network")
-include(":feature-list")
+include(":feature-movies")
 include(":feature-details")
+include(":feature-news")

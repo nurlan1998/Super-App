@@ -2,7 +2,7 @@ package com.superapp.mobile.navigation
 
 import android.os.Bundle
 import androidx.navigation.NavController
-import com.superapp.feature.list.domain.navigation.MovieListNavigation
+import com.superapp.feature.movies.domain.navigation.MovieListNavigation
 import com.superapp.mobile.R
 import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Inject
