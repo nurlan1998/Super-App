@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.superapp.core.network.models.NetworkResponse
 import com.superapp.feature.movies.domain.DiscoverMoviesUseCase
+import com.superapp.feature.movies.domain.model.CollectionEntity
 import com.superapp.feature.movies.domain.model.MoviePoster
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -15,7 +16,7 @@ import javax.inject.Inject
 internal class MovieViewModel @Inject constructor(
     private val useCase: DiscoverMoviesUseCase
 ) : ViewModel() {
-    val moviesLiveData: MutableLiveData<NetworkResponse<List<MoviePoster>>> = MutableLiveData()
+    val moviesLiveData: MutableLiveData<List<CollectionEntity>> = MutableLiveData()
     val errorMessage = MutableLiveData<String>()
 
     init {
@@ -26,17 +27,18 @@ internal class MovieViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val result = useCase.invoke()
-                when(result.isSuccess) {
+                when (result.isSuccess) {
                     true -> {
-                        moviesLiveData.value = result
+                        moviesLiveData.value = result.data
                     }
+
                     false -> {
                         errorMessage.value = result.error
                     }
                 }
-            }catch (e: Exception) {
+            } catch (e: Exception) {
                 errorMessage.value = e.message
-                Log.d("isSuccess",e.message.toString())
+                Log.d("isSuccess", e.message.toString())
             }
         }
     }

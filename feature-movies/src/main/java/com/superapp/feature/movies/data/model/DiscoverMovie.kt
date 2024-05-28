@@ -1,6 +1,7 @@
 package com.superapp.feature.movies.data.model
 
 import com.google.gson.annotations.SerializedName
+import com.superapp.core.database.models.IdGenres
 
 data class DiscoverMovie(
     val page: Int,

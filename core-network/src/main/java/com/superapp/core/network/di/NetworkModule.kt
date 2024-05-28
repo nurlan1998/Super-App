@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
-private const val BASE_URL = "https://api.themoviedb.org/3/movie/"
+private const val BASE_URL = "https://api.themoviedb.org/3/"
 
 @Module
 @InstallIn(SingletonComponent::class)

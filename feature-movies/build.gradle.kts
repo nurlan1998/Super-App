@@ -40,6 +40,7 @@ android {
 dependencies {
 
     implementation(project(":core-network"))
+    implementation(project(":core-database"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -61,4 +62,5 @@ dependencies {
 
     implementation("com.google.dagger:hilt-android:2.49")
     kapt("com.google.dagger:hilt-compiler:2.49")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
 }

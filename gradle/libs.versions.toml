@@ -20,6 +20,8 @@ okhttp = "4.10.0"
 orbit = "4.3.2"
 recycler_view = "1.2.1"
 retrofit = "2.9.0"
+dagger_hilt = "2.49"
+room_version = "2.6.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -47,6 +49,12 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit
 retrofit_gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 viewmodel_ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 coil = { module = "io.coil-kt:coil", version.ref = "coil" }
+hilt_android = {module = "com.google.dagger:hilt-android",version.ref = "dagger_hilt"}
+hilt_compiler = {module = "com.google.dagger:hilt-compiler",version.ref = "dagger_hilt"}
+room = {module = "androidx.room:room-runtime", version.ref = "room_version"}
+room_compiler = {module = "androidx.room:room-compiler", version.ref = "room_version"}
+room_paging = {module = "androidx.room:room-paging", version.ref = "room_version"}
+room_ktx = {module = "androidx.room:room-ktx", version.ref = "room_version"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
