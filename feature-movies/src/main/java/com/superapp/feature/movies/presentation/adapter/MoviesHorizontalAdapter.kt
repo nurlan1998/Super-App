@@ -6,10 +6,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import coil.ImageLoader
 import coil.imageLoader
+import coil.load
 import coil.request.CachePolicy
 import coil.request.ImageRequest
 import com.superapp.feature.movies.databinding.HorizontalItemBinding
+import com.superapp.feature.movies.databinding.ItemHorizontalBinding
 import com.superapp.feature.movies.domain.model.MoviePoster
 import kotlinx.coroutines.Dispatchers
 
@@ -38,21 +41,21 @@ internal class MoviesHorizontalAdapter :
 
         fun bindBestSellerView(movie: MoviePoster, context: Context) {
             binding.bestSellerText.text = movie.title
-//            val imgLoader = ImageLoader.Builder(context)
-//                .memoryCachePolicy(CachePolicy.ENABLED)
-//                .diskCachePolicy(CachePolicy.ENABLED)
-//                .build()
-//            binding.bestSellerImage.load(movie.posterImageUrl,imgLoader)
-
-            val request = ImageRequest.Builder(binding.bestSellerImage.context)
-                .data(movie.posterImageUrl)
-                .dispatcher(Dispatchers.IO)
-                .memoryCacheKey(movie.posterImageUrl)
-                .diskCacheKey(movie.posterImageUrl)
-                .diskCachePolicy(CachePolicy.ENABLED)
+            val imgLoader = ImageLoader.Builder(context)
                 .memoryCachePolicy(CachePolicy.ENABLED)
+                .diskCachePolicy(CachePolicy.ENABLED)
                 .build()
-            context.imageLoader.enqueue(request)
+            binding.bestSellerImage.load(movie.posterImageUrl,imgLoader)
+
+//            val request = ImageRequest.Builder(binding.bestSellerImage.context)
+//                .data(movie.posterImageUrl)
+//                .dispatcher(Dispatchers.IO)
+//                .memoryCacheKey(movie.posterImageUrl)
+//                .diskCacheKey(movie.posterImageUrl)
+//                .diskCachePolicy(CachePolicy.ENABLED)
+//                .memoryCachePolicy(CachePolicy.ENABLED)
+//                .build()
+//            context.imageLoader.enqueue(request)
 
             /*Glide.with(context)
                 .load(movie.posterImageUrl)

@@ -10,8 +10,12 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.superapp.feature.movies.R
 import com.superapp.feature.movies.databinding.FragmentMoviesListBinding
+import com.superapp.feature.movies.domain.model.CollectionEntity
+import com.superapp.feature.movies.domain.model.MoviePoster
 import com.superapp.feature.movies.domain.navigation.MovieListNavigation
+import com.superapp.feature.movies.presentation.adapter.ListItem
 import com.superapp.feature.movies.presentation.adapter.MovieAdapter
 import com.superapp.feature.movies.presentation.viewmodel.MovieViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,7 +29,7 @@ class MoviesListFragment : Fragment() {
     @Inject
     lateinit var navigation: MovieListNavigation
 
-    private val adapter by lazy { MovieAdapter(navigation::openMovie) }
+//    private val adapter by lazy { MovieAdapter(getMultiLevelData()) }
     private lateinit var binding: FragmentMoviesListBinding
 
     override fun onCreateView(
@@ -35,31 +39,54 @@ class MoviesListFragment : Fragment() {
         binding = FragmentMoviesListBinding.inflate(inflater)
         return binding.root
     }
+    private fun getMultiLevelData(movies: List<CollectionEntity>): List<ListItem> {
+        val res: MutableList<ListItem> = mutableListOf()
+        for(movie in movies) {
+            res.add(ListItem.HorizontalItem(movie.genre.name))
+            res.add(ListItem.VerticalItem(movie.movies))
+        }
+        return res
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val concatAdapter = ConcatAdapter()
-        concatAdapter.addAdapter(adapter)
-
-        val linearLayoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-        binding.movieRecycler.run {
-            layoutManager = linearLayoutManager
-            adapter = concatAdapter
-            enforceSingleScrollDirection()
-        }
-        binding.movieProgress.visibility = View.VISIBLE
-
-        viewModel.moviesLiveData.observe(requireActivity()) {
-            adapter.setData(it)
-            binding.movieProgress.visibility = View.INVISIBLE
+        binding.recyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            viewModel.moviesLiveData.observe(requireActivity()) {
+                adapter = MovieAdapter(getMultiLevelData(it))
+            }
         }
 
-        viewModel.errorMessage.observe(requireActivity()) {
-            binding.movieProgress.visibility = View.INVISIBLE
-            binding.movieError.visibility = View.VISIBLE
-            binding.movieError.text = it
-        }
+        // Initialize vertical RecyclerView for items within each category (dummy data)
+
+        // Example data
+
+        // Attach the adapter to the RecyclerView
+//        val adapter = MovieAdapter(items)
+
+
+//        val concatAdapter = ConcatAdapter()
+//        concatAdapter.addAdapter(adapter)
+//
+//        val linearLayoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+//        binding.movieRecycler.run {
+//            layoutManager = linearLayoutManager
+//            adapter = concatAdapter
+//            enforceSingleScrollDirection()
+//        }
+//        binding.movieProgress.visibility = View.VISIBLE
+//
+//        viewModel.moviesLiveData.observe(requireActivity()) {
+//            adapter.setData(it)
+//            binding.movieProgress.visibility = View.INVISIBLE
+//        }
+//
+//        viewModel.errorMessage.observe(requireActivity()) {
+//            binding.movieProgress.visibility = View.INVISIBLE
+//            binding.movieError.visibility = View.VISIBLE
+//            binding.movieError.text = it
+//        }
     }
 
     private fun RecyclerView.enforceSingleScrollDirection() {
@@ -125,3 +152,10 @@ class MoviesListFragment : Fragment() {
         }
     }
 }
+
+data class Product(
+    val name: String,
+    val description: String,
+    val price: Double,
+    val imageResId: Int
+)

@@ -50,5 +50,6 @@ dependencies {
     implementation(libs.coil)
 
     implementation("com.google.dagger:hilt-android:2.49")
+    implementation(libs.androidx.navigation.ui.ktx)
     kapt("com.google.dagger:hilt-compiler:2.49")
 }
